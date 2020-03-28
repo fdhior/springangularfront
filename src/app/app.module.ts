@@ -6,13 +6,14 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DirectivaComponent } from './directiva/directiva.component';
 import { ClientesComponent } from './clientes/clientes.component';
-import { ClienteService } from './clientes/cliente.service'; 
 import { RouterModule, Routes } from '@angular/router';
 
+import { ClienteService } from './clientes/cliente.service';
+
 const routes: Routes = [
-  { path: '', redirectTo: '/clientes', pathMatch: 'full' },
-  { path: 'directivas', component: DirectivaComponent }, 
-  { path: 'clientes', component: ClientesComponent },
+  {path: '', redirectTo: '/clientes', pathMatch: 'full'},
+  {path: 'directivas', component: DirectivaComponent},
+  {path: 'clientes', component: ClientesComponent},
 ];
 
 
