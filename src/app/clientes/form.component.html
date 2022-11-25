@@ -1,13 +1,13 @@
 <ul class="alert alert-danger" *ngIf="errores?.length > 0">
     <li *ngFor="let err of errores">
-        {{ err }}    
+        {{ err }}
     </li>
 </ul>
 <div class="card bg-dark text-white">
     <div class="card-header">{{ titulo }}</div>
     <div class="card-body">
 
-        <form #clienteForm="ngForm"> 
+        <form #clienteForm="ngForm">
             <div class="form-group row">
                 <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
                 <div class="col-sm-6">
@@ -33,7 +33,7 @@
                             Apellido es requerido
                         </div>
                     </div>
-                </div>    
+                </div>
             </div>
             <div class="form-group row">
                 <label for="email" class="col-form-label col-sm-2">Email</label>
@@ -48,8 +48,8 @@
                             Email debe tener un formato válido
                         </div>
                     </div>
-                </div>    
-            </div>            
+                </div>
+            </div>
 
             <div class="form-group row">
                 <label for="createAt" class="col-form-label col-sm-2">Fecha</label>
@@ -59,15 +59,26 @@
                     <mat-datepicker-toggle [for]="miDatepicker"></mat-datepicker-toggle>
                     <mat-datepicker #miDatepicker></mat-datepicker>
                     <!-- required -->
-                </div>    
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="region" class="col-form-label col-sm-2">Región</label>
+                <div class="col-sm-6">
+                    <!-- <input type="date" class="form-control" [(ngModel)]="cliente.createAt" name="createAt"> -->
+                    <select [compareWith]="compararRegion" class="form-control" [(ngModel)]="cliente.region" name="region" style="width: 500px;">
+                        <option [ngValue]="undefined">--- seleccionar una región ---</option>
+                        <option *ngFor="let region of regiones" [ngValue]="region">{{region.nombre}}</option>
+                    </select>
+                </div>
             </div>
 
             <div class="form-group row">
                 <div class="col-sm-6">
                     <button class="btn btn-primary" role="button" (click)="create()" *ngIf="!cliente.id else elseBlock" [disabled]="!clienteForm.form.valid">Crear</button>
                     <ng-template #elseBlock>
-                        <button class="btn btn-primary" role="button" (click)="update()" [disabled]="!clienteForm.form.valid">Editar</button>     
-                    </ng-template>        
+                        <button class="btn btn-primary" role="button" (click)="update()" [disabled]="!clienteForm.form.valid">Editar</button>
+                    </ng-template>
                 </div>
             </div>
         </form>
